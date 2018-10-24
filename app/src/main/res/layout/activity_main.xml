@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:stretchColumns="1">
+
+    <TableRow>
+
+        <TextView
+            android:layout_span="2"
+            android:gravity="center"
+            android:text="ĐĂNG NHẬP"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:text="IP address"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtIP"
+            android:hint="Nhập IP" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Username"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtUser"
+            android:hint="Nhập ID" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Password"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtPass"
+            android:hint="Nhập Mật Khẩu"
+            android:inputType="textPassword" />
+    </TableRow>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#291010"
+            android:text="Hủy" />
+
+    </LinearLayout>
+
+</TableLayout>
