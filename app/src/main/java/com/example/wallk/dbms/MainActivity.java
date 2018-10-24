@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> arrayList;
     PreparedStatement stmt;
     ResultSet rs;
-    Connection cs;
+    ConectionClass cs;
+    Connection conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,67 +76,9 @@ public class MainActivity extends AppCompatActivity {
     private void khoiTaoDangNhap() {
         //ConectionClass cs = new ConectionClass();
         //cs.connect("192.168.11.13");
-
-        cs = connect();
-        if(cs!=null)
-        {
-            Toast.makeText(MainActivity.this,"thành công",Toast.LENGTH_LONG);
-        }
+        cs = new ConectionClass();
+        conn=cs.CONN("192.168.1.1","test","120");
     }
-
-    @SuppressLint("NewApi")
-    public Connection CONN(String ip, String un, String password) {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        String classs = "net.sourceforge.jtds.jdbc.Driver";
-        StrictMode.setThreadPolicy(policy);
-        Connection conn = null;
-        String ConnURL = null;
-        try {
-
-            Class.forName(classs);
-            //ConnURL = "jdbc:jtds:sqlserver://" + ip + ";"
-            //       + "databaseName=" + db + ";user=" + un + ";password="
-            //       + password + ";";
-            ConnURL = "jdbc:jtds:sqlserver://192.168.43.82;databaseName=test;user=user;password=1";
-            conn = DriverManager.getConnection(ConnURL);
-        } catch (SQLException se) {
-            Log.e("ERRO", se.getMessage());
-        } catch (ClassNotFoundException e) {
-            Log.e("ERRO", e.getMessage());
-        } catch (Exception e) {
-            Log.e("ERRO", e.getMessage());
-        }
-        return conn;
-    }
-
-    private static final String LOG = "DEBUG";
-    private static String ip = "192.168.43.83";
-    private static String port = "1433";
-    private static String classs = "net.sourceforge.jtds.jdbc.Driver";
-    private static String db = "test";
-    private static String un = "user";
-    private static String password = "1";
-
-    public  Connection connect() {
-        Connection conn = null;
-        String ConnURL = null;
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        try {
-            Class.forName(classs);
-            ConnURL = "jdbc:jtds:sqlserver://" + ip + ";"
-                    + "databaseName=" + db + ";user=" + un + ";password="
-                    + password + ";";
-            Toast.makeText(MainActivity.this,"thành công",Toast.LENGTH_LONG);
-            conn = DriverManager.getConnection(ConnURL);
-        } catch (SQLException e) {
-            Log.d(LOG, e.getMessage());
-        } catch (ClassNotFoundException e) {
-            Log.d(LOG, e.getMessage());
-        }
-        return conn;
-    }
-
 }
 
 
