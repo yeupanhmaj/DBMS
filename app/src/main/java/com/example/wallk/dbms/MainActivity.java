@@ -12,6 +12,10 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,60 +28,13 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    EditText txtIP, txtUser, txtPass;
-    Button btnLogin, btnCancel;
-    GridView dgvCountry;
-    ArrayList<String> arrayList;
-    PreparedStatement stmt;
-    ResultSet rs;
-    ConectionClass cs;
-    Connection conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addControlS();
-        addEventS();
-    }
+        AppCenter.start(getApplication(), "fab3c80c-070d-41f6-9e65-b797848cb79a", Analytics.class, Crashes.class);
 
-    private void addControlS() {
-        btnCancel = (Button) findViewById(R.id.btnCancel);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        txtIP = this.<EditText>findViewById(R.id.txtIP);
-        txtUser = this.<EditText>findViewById(R.id.txtUser);
-        txtPass = this.<EditText>findViewById(R.id.txtPass);
-        //txtTest= this.<TextView>findViewById(R.id.txtTest);
-        //dgvCountry = this.<GridView>findViewById(R.id.dgvCountry);
-
-    }
-
-    private void addEventS() {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                khoiTaoDangNhap();
-            }
-        });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                huyDangNhap();
-            }
-        });
-    }
-
-    private void huyDangNhap() {
-        txtIP.getText().clear();
-        txtUser.getText().clear();
-        txtPass.getText().clear();
-    }
-
-    private void khoiTaoDangNhap() {
-        //ConectionClass cs = new ConectionClass();
-        //cs.connect("192.168.11.13");
-        cs = new ConectionClass();
-        conn=cs.CONN("192.168.1.1","test","120");
     }
 }
 

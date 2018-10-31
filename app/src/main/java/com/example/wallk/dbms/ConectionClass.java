@@ -11,10 +11,9 @@ import java.sql.SQLException;
 public class ConectionClass {
 
     String classs = "net.sourceforge.jtds.jdbc.Driver";
-    String db = "test";
 
     @SuppressLint("NewApi")
-    public Connection CONN(String ip,String un,String password) {
+    public Connection CONN(String ip,String db,String username,String password) {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -23,7 +22,7 @@ public class ConectionClass {
         try {
             Class.forName(classs);
             ConnURL = "jdbc:jtds:sqlserver://" + ip + ";"
-                    + "databaseName=" + db + ";user=" + un + ";password="
+                    + "databaseName=" + db + ";user=" + username + ";password="
                     + password + ";";
             conn = DriverManager.getConnection(ConnURL);
         } catch (SQLException se) {
