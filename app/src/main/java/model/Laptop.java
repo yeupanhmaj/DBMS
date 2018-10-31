@@ -6,16 +6,29 @@ public class Laptop {
     private String TenSP;
     private String Hang;
     private String CauHinh;
-    public Laptop(String maSP, String maLoaiSP, String tenSP, String hang, String cauHinh) {
+    private String Hinh;
+
+    public Laptop(String maSP, String maLoaiSP, String tenSP, String hang, String cauHinh, String hinh) {
         MaSP = maSP;
         MaLoaiSP = maLoaiSP;
         TenSP = tenSP;
         Hang = hang;
         CauHinh = cauHinh;
+        Hinh = hinh;
     }
 
     public Laptop() {
     }
+    public String getHinh() {
+        return Hinh;
+    }
+
+    public void setHinh(String hinh) {
+        Hinh = hinh;
+    }
+
+
+
 
     public String getMaSP() {
         return MaSP;
