@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.laptop_list);
         AppCenter.start(getApplication(), "fab3c80c-070d-41f6-9e65-b797848cb79a", Analytics.class, Crashes.class);
-
     }
 }
 
