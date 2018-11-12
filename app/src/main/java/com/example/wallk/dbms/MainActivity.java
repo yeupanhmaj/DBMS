@@ -1,6 +1,7 @@
 package com.example.wallk.dbms;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,12 +29,33 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
+    Button btnDangNhap;
+    Connection connection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.laptop_list);
+        setContentView(R.layout.activity_main);
         AppCenter.start(getApplication(), "fab3c80c-070d-41f6-9e65-b797848cb79a", Analytics.class, Crashes.class);
+        setControl();
+        setEvent();
+    }
+    private void setControl()
+    {
+        btnDangNhap = (Button)findViewById(R.id.btnLogin);
+    }
+    private  void setEvent()
+    {
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+               // ConectionClass conn = new ConectionClass();
+                //connection = conn.CONN();
+                Intent intent = new Intent(MainActivity.this,LaptopActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
 
