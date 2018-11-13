@@ -1,6 +1,6 @@
 package model;
 
-public class SanPham {
+public class Laptop {
     private String MaSP;
     private String MaLoaiSP;
     private String TenSP;
@@ -8,7 +8,7 @@ public class SanPham {
     private String CauHinh;
     private String Hinh;
 
-    public SanPham(String maSP, String maLoaiSP, String tenSP, String hang, String cauHinh, String hinh) {
+    public Laptop(String maSP, String maLoaiSP, String tenSP, String hang, String cauHinh, String hinh) {
         MaSP = maSP;
         MaLoaiSP = maLoaiSP;
         TenSP = tenSP;
@@ -17,7 +17,7 @@ public class SanPham {
         Hinh = hinh;
     }
 
-    public SanPham() {
+    public Laptop() {
     }
     public String getHinh() {
         return Hinh;
@@ -69,4 +69,6 @@ public class SanPham {
     public void setCauHinh(String cauHinh) {
         CauHinh = cauHinh;
     }
+
+
 }

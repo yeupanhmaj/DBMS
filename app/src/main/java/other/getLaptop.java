@@ -6,54 +6,48 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import model.Laptop;
 import model.LoaiSP;
 
-public class GetData {
-
+public class getLaptop {
     Connection connect;
     String ConnectionResult = "";
     Boolean isSuccess = false;
 
-    public List<LoaiSP> doInBackground() {
+    public List<Laptop> doInBackground() {
 
-        List<LoaiSP> data = null;
+        List<Laptop> data = null;
         data = new ArrayList<>();
-        try
-        {
-            ConectionClass conStr=new ConectionClass();
-            connect =conStr.CONN();        // Connect to database
-            if (connect == null)
-            {
+        try {
+            ConectionClass conStr = new ConectionClass();
+            connect = conStr.CONN();        // Connect to database
+            if (connect == null) {
                 ConnectionResult = "Check Your Internet Access!";
-            }
-            else
-            {
+            } else {
                 // Change below query according to your own database.
-                String query = "select * from LoaiSP";
+                String query = "select * from Laptop";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                while (rs.next()){
-                    LoaiSP temp = new LoaiSP();
+                while (rs.next()) {
+                    Laptop temp = new Laptop();
+                    temp.setMaSP(rs.getString("MaSP"));
                     temp.setMaLoaiSP(rs.getString("MaLoaiSP"));
-                    temp.setTenLoaiSP(rs.getString("TenLoaiSP"));
+                    temp.setTenSP(rs.getString("TenSP"));
+                    temp.setHang(rs.getString("Hang"));
+                    temp.setCauHinh(rs.getString("CauHinh"));
+                    temp.setHinh(rs.getString("Hinh"));
                     data.add(temp);
                 }
                 ConnectionResult = " successful";
-                isSuccess=true;
+                isSuccess = true;
                 connect.close();
             }
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             isSuccess = false;
             ConnectionResult = ex.getMessage();
         }
         return data;
     }
-
-
 }

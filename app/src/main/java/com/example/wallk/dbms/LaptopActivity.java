@@ -2,14 +2,15 @@ package com.example.wallk.dbms;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.List;
-import java.util.Map;
 
+import model.Laptop;
 import model.LoaiSP;
-import other.GetData;
+import other.LaptopAdapter;
+import other.getLaptop;
+import other.getLoaiSP;
 import other.LoaiSPAdater;
 
 public class LaptopActivity extends AppCompatActivity {
@@ -18,16 +19,17 @@ public class LaptopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.laptop_list);
-        lv = (ListView)findViewById(R.id.LV);
+        lv = (ListView)findViewById(R.id.lv);
         setList();
     }
 
     private void setList() {
-        List<LoaiSP> MyData = null;
-        GetData mydata =new GetData();
+        List<Laptop> MyData = null;
+        getLaptop mydata =new getLaptop();
         MyData= mydata.doInBackground();
 
-        LoaiSPAdater arrayAdapter = new LoaiSPAdater(this, R.layout.loaisp_item , MyData);
+        final LaptopAdapter arrayAdapter = new LaptopAdapter(this, R.layout.laptop_item , MyData);
+//        arrayAdapter.notifyDataSetChanged();
         lv.setAdapter(arrayAdapter);
     }
 }

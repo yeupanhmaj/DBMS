@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnDangNhap;
+    Button btnDangNhap,btnCancel;
     Connection connection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private void setControl()
     {
         btnDangNhap = (Button)findViewById(R.id.btnLogin);
+        btnCancel= (Button)findViewById(R.id.btnCancel);
     }
     private  void setEvent()
     {
@@ -49,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-               // ConectionClass conn = new ConectionClass();
-                //connection = conn.CONN();
                 Intent intent = new Intent(MainActivity.this,LaptopActivity.class);
                 startActivity(intent);
             }

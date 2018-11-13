@@ -29,15 +29,18 @@ public class LoaiSPAdater extends ArrayAdapter<LoaiSP> {
         this.object=objects;
     }
 
-    public View getView(int position,View convertView, ViewGroup parent) {
-        LayoutInflater inflater= this.context.getLayoutInflater();//dùng để build layout thành code java
-        View row=inflater.inflate(this.resource,null);
-        TextView txtID= (TextView)row.findViewById(R.id.txtID);
-        TextView txtTen=(TextView)row.findViewById(R.id.txtName);
-        //back to layout
-        LoaiSP LSP = this.object.get(position);
-        txtID.setText(LSP.getMaLoaiSP());
-        txtTen.setText(LSP.getTenLoaiSP());
-        return row;
-    }
+//    public View getView(int position,View convertView, ViewGroup parent) {
+//        //dùng để build layout thành code java
+//        LayoutInflater inflater= this.context.getLayoutInflater();
+//        View row=inflater.inflate(this.resource,null);
+//        TextView txtID= (TextView)row.findViewById(R.id.txtID);
+//        TextView txtTen=(TextView)row.findViewById(R.id.txtName);
+//
+//        //back to layout, gán các dữ liệu vào trong layout
+//        LoaiSP LSP = this.object.get(position);
+//        txtID.setText(LSP.getMaLoaiSP());
+//        txtTen.setText(LSP.getTenLoaiSP());
+//
+//        return row;
+//    }
 }
