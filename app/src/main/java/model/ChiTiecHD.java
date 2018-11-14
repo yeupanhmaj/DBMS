@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ChiTiecHD {
+public class ChiTiecHD implements Serializable {
     private String MaHD;
     private String MaSP;
     private Date NgayLap;

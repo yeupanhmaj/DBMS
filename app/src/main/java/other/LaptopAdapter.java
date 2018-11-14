@@ -39,7 +39,7 @@ public class LaptopAdapter extends ArrayAdapter<Laptop>
 
         //back to layout, gán các dữ liệu vào trong layout
         Laptop Lt = this.object.get(position);
-        txtTen.setText(Lt.getHang()+ Lt.getTenSP());
+        txtTen.setText(Lt.getHang()+" "+ Lt.getTenSP());
         txtThongTin.setText(Lt.getCauHinh());
         Picasso.with(context).load(Lt.getHinh()).into(imgHinh);
         return row;

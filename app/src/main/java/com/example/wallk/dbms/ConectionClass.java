@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class ConectionClass {
 
     String classs = "net.sourceforge.jtds.jdbc.Driver";
-    private String ip="192.168.11.24",db="CHLaptop",username="user",password="1";
+    private String ip="192.168.1.4",db="CHLaptop",username="user",password="1";
 
     @SuppressLint("NewApi")
     public Connection CONN(String ip,String db,String username,String password) {

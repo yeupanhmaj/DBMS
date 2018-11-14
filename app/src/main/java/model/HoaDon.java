@@ -1,6 +1,8 @@
 package model;
 
-public class HoaDon {
+import java.io.Serializable;
+
+public class HoaDon implements Serializable {
     private String MaHD;
     private String MaNV;
     private String MaKH;

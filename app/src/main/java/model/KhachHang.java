@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class KhachHang {
+public class KhachHang implements Serializable {
     private String MaKH;
     private String HoTen;
     private Date NgaySinh;

@@ -54,7 +54,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,EditLaptopActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 

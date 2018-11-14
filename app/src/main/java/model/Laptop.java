@@ -1,6 +1,8 @@
 package model;
 
-public class Laptop {
+import java.io.Serializable;
+
+public class Laptop implements Serializable {
     private String MaSP;
     private String MaLoaiSP;
     private String TenSP;

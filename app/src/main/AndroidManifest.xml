@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LaptopActivity"></activity>
+        <activity android:name=".LaptopActivity" />
+        <activity android:name=".EditLaptopActivity"></activity>
     </application>
 
 </manifest>

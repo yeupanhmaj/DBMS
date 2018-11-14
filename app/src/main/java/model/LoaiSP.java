@@ -1,6 +1,8 @@
 package model;
 
-public class LoaiSP {
+import java.io.Serializable;
+
+public class LoaiSP implements Serializable {
     private String MaLoaiSP;
     private String TenLoaiSP;
 

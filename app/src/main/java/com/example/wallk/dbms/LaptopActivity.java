@@ -29,7 +29,6 @@ public class LaptopActivity extends AppCompatActivity {
         MyData= mydata.doInBackground();
 
         final LaptopAdapter arrayAdapter = new LaptopAdapter(this, R.layout.laptop_item , MyData);
-//        arrayAdapter.notifyDataSetChanged();
         lv.setAdapter(arrayAdapter);
     }
 }
