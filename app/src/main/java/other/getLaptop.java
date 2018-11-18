@@ -16,13 +16,13 @@ public class getLaptop {
     String ConnectionResult = "";
     Boolean isSuccess = false;
 
-    public List<Laptop> doInBackground() {
+    public List<Laptop> doInBackground(String ip,String User,String Pass) {
 
         List<Laptop> data = null;
         data = new ArrayList<>();
         try {
             ConectionClass conStr = new ConectionClass();
-            connect = conStr.CONN();        // Connect to database
+            connect = conStr.CONN(ip,User,Pass);        // Connect to database
             if (connect == null) {
                 ConnectionResult = "Check Your Internet Access!";
             } else {

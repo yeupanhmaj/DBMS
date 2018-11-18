@@ -33,7 +33,8 @@
 
         <EditText
             android:id="@+id/txtUser"
-            android:hint="Nhập ID" />
+            android:hint="Nhập ID"
+            android:text="user"/>
     </TableRow>
 
     <TableRow>
@@ -45,6 +46,7 @@
         <EditText
             android:id="@+id/txtPass"
             android:hint="Nhập Mật Khẩu"
+            android:text="1"
             android:inputType="textPassword" />
     </TableRow>
 

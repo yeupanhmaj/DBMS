@@ -30,6 +30,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     Button btnDangNhap,btnCancel;
+    EditText txtIP,txtUser,txtPass;
     Connection connection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,12 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setControl()
     {
-        btnDangNhap = (Button)findViewById(R.id.btnLogin);
-        btnCancel= (Button)findViewById(R.id.btnCancel);
+        this.setTitle("Đăng Nhập");
+        txtIP=findViewById(R.id.txtIP);
+        txtUser=findViewById(R.id.txtUser);
+        txtPass=findViewById(R.id.txtPass);
+        btnDangNhap = findViewById(R.id.btnLogin);
+        btnCancel= findViewById(R.id.btnCancel);
     }
     private  void setEvent()
     {
@@ -51,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,LaptopActivity.class);
+                intent.putExtra("IP",txtIP.getText().toString());
+                intent.putExtra("User",txtUser.getText().toString());
+                intent.putExtra("Pass",txtPass.getText().toString());
                 startActivity(intent);
             }
         });
@@ -58,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,EditLaptopActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

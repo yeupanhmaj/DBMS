@@ -14,7 +14,7 @@ public class ConectionClass {
     private String ip="192.168.1.4",db="CHLaptop",username="user",password="1";
 
     @SuppressLint("NewApi")
-    public Connection CONN(String ip,String db,String username,String password) {
+    public Connection CONN(String ip,String username,String password) {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -23,7 +23,7 @@ public class ConectionClass {
         try {
             Class.forName(classs);
             ConnURL = "jdbc:jtds:sqlserver://" + ip + ";"
-                    + "databaseName=" + db + ";user=" + username + ";password="
+                    + "databaseName=" + this.db + ";user=" + username + ";password="
                     + password + ";";
             conn = DriverManager.getConnection(ConnURL);
         } catch (SQLException se) {

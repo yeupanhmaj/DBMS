@@ -72,5 +72,13 @@ public class Laptop implements Serializable {
         CauHinh = cauHinh;
     }
 
+    @Override
+    public String toString() {
+        return getHang()+" "+getTenSP();
+    }
 
+    public String addLaptop()
+    {
+        return null;
+    }
 }
