@@ -87,39 +87,6 @@ public class Laptop implements Serializable {
         return getHang()+" "+getTenSP();
     }
 
-    public List<Laptop> doInBackground(String ip, String User, String Pass) {
 
-        List<Laptop> data = null;
-        data = new ArrayList<>();
-        try {
-            ConectionClass conStr = new ConectionClass();
-            connect = conStr.CONN(ip,User,Pass);        // Connect to database
-            if (connect == null) {
-                ConnectionResult = "Check Your Internet Access!";
-            } else {
-                // Change below query according to your own database.
-                String query = "";
-                Statement stmt = connect.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                while (rs.next()) {
-                    Laptop temp = new Laptop();
-                    temp.setMaSP(rs.getString("MaSP"));
-                    temp.setMaLoaiSP(rs.getString("MaLoaiSP"));
-                    temp.setTenSP(rs.getString("TenSP"));
-                    temp.setHang(rs.getString("Hang"));
-                    temp.setCauHinh(rs.getString("CauHinh"));
-                    temp.setHinh(rs.getString("Hinh"));
-                    data.add(temp);
-                }
-                ConnectionResult = " successful";
-                isSuccess = true;
-                connect.close();
-            }
-        } catch (Exception ex) {
-            isSuccess = false;
-            ConnectionResult = ex.getMessage();
-        }
-        return data;
-    }
 
 }

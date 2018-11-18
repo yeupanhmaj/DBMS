@@ -53,4 +53,65 @@ public class getLaptop {
         }
         return data;
     }
+    public String doInBackground(String ip, String User, String Pass,Laptop lt,String status) {
+        String query="";
+        try {
+            ConectionClass conStr = new ConectionClass();
+            connect = conStr.CONN(ip,User,Pass);        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                if(status.equals("add"))
+                    // Change below query according to your own database.
+                    query = "exec ThemSP '"+lt.getMaSP()+"','"
+                            +lt.getMaLoaiSP()+"','"
+                            +lt.getTenSP()+"','"
+                            +lt.getHang()+"','"
+                            +lt.getCauHinh()+"'";
+                else if(status.equals("edit"))
+                    query = "exec SuaSP '"+lt.getMaSP()+"','"
+                            +lt.getMaLoaiSP()+"','"
+                            +lt.getTenSP()+"','"
+                            +lt.getHang()+"','"
+                            +lt.getCauHinh()+"'";
+                else if(status.equals("delete"))
+                    query = "exec SuaSP '"+lt.getMaSP()+"','"
+                            +lt.getMaLoaiSP()+"','"
+                            +lt.getTenSP()+"','"
+                            +lt.getHang()+"','"
+                            +lt.getCauHinh()+"'";
+                Statement stmt = connect.createStatement();
+                stmt.executeUpdate(query);
+                ConnectionResult = "successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return ConnectionResult;
+    }
+    public String doInBackground(String ip, String User, String Pass,String maSP,String status) {
+        String query="";
+        try {
+            ConectionClass conStr = new ConectionClass();
+            connect = conStr.CONN(ip,User,Pass);        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                 if(status.equals("delete"))
+                    query = "exec XoaSP '"+maSP+"'";
+                Statement stmt = connect.createStatement();
+                stmt.executeUpdate(query);
+                ConnectionResult = "successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return ConnectionResult;
+    }
 }

@@ -25,6 +25,7 @@ public class LaptopActivity extends AppCompatActivity {
     String ip,user,pass;
     Button btnThem;
     List<Laptop> MyData = null;
+    LaptopAdapter arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,11 @@ public class LaptopActivity extends AppCompatActivity {
         getLoginInfo();
         setList();
         setEvent();
+        getResult();
+    }
+
+    private void getResult() {
+
     }
 
     private void setEvent() {
@@ -47,7 +53,10 @@ public class LaptopActivity extends AppCompatActivity {
                 Intent intentLT = new Intent(LaptopActivity.this,EditLaptopActivity.class);
                 intentLT.putExtra("model",lt);
                 intentLT.putExtra("status","edit");
-                startActivity(intentLT);
+                intentLT.putExtra("IP",ip);
+                intentLT.putExtra("User",user);
+                intentLT.putExtra("Pass",pass);
+                startActivityForResult(intentLT,2);
             };
         });
         btnThem.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +65,24 @@ public class LaptopActivity extends AppCompatActivity {
                 Intent intentLT = new Intent(LaptopActivity.this,EditLaptopActivity.class);
                 intentLT.putExtra("status","add");
                 intentLT.putExtra("maSP",MyData.get(MyData.size()-1).getMaSP());
-                startActivity(intentLT);
+                intentLT.putExtra("IP",ip);
+                intentLT.putExtra("User",user);
+                intentLT.putExtra("Pass",pass);
+                startActivityForResult(intentLT,1);
+            }
+        });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Laptop lt = (Laptop) lv.getAdapter().getItem(position);
+                MyData.remove(position);// position of item you click
+                getLaptop myData = new getLaptop();
+                myData.doInBackground(ip,user,pass,lt.getMaSP().toString(),"delete");
+                Toast.makeText(getApplicationContext(), "Xoá thành công"
+                        , Toast.LENGTH_LONG)
+                        .show();
+                arrayAdapter.notifyDataSetChanged();
+                return false;
             }
         });
     }
@@ -70,7 +96,7 @@ public class LaptopActivity extends AppCompatActivity {
     private void setList() {
         getLaptop mydata =new getLaptop();
         MyData= mydata.doInBackground(ip,user,pass);
-        final LaptopAdapter arrayAdapter = new LaptopAdapter(this, R.layout.laptop_item , MyData);
+        arrayAdapter = new LaptopAdapter(this, R.layout.laptop_item , MyData);
         lv.setAdapter(arrayAdapter);
     }
 
@@ -80,5 +106,24 @@ public class LaptopActivity extends AppCompatActivity {
          ip=intent.getStringExtra("IP");
          user=intent.getStringExtra("User");
          pass=intent.getStringExtra("Pass");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode==99)
+        {
+            Toast.makeText(getApplicationContext(), "Thêm thành công"
+                        , Toast.LENGTH_LONG)
+                       .show();
+            setList();
+        }
+        else if(requestCode==2 && resultCode==99)
+        {
+            Toast.makeText(getApplicationContext(), "Sửa thành công"
+                    , Toast.LENGTH_LONG)
+                    .show();
+            setList();
+        }
     }
 }
