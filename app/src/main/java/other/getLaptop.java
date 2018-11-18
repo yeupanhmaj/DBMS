@@ -15,6 +15,7 @@ public class getLaptop {
     Connection connect;
     String ConnectionResult = "";
     Boolean isSuccess = false;
+    private String URL ="https://image.ibb.co/cpLcZf/kisscc0-laptop-drawing-computer-monitors-computer-icons-3d-laptop-isometric-design-drawing-5b7597169d27e3-0931819315344330466437.png";
 
     public List<Laptop> doInBackground(String ip,String User,String Pass) {
 
@@ -37,7 +38,9 @@ public class getLaptop {
                     temp.setTenSP(rs.getString("TenSP"));
                     temp.setHang(rs.getString("Hang"));
                     temp.setCauHinh(rs.getString("CauHinh"));
+                    if(rs.getString("Hinh")!=null)
                     temp.setHinh(rs.getString("Hinh"));
+                    else temp.setHinh(URL);
                     data.add(temp);
                 }
                 ConnectionResult = " successful";

@@ -21,6 +21,7 @@ public class LaptopAdapter extends ArrayAdapter<Laptop>
     Activity context;
     int resource;
     List<Laptop> object;
+    private String URL="https://image.ibb.co/cpLcZf/kisscc0-laptop-drawing-computer-monitors-computer-icons-3d-laptop-isometric-design-drawing-5b7597169d27e3-0931819315344330466437.png";
 
     public LaptopAdapter(Activity context, int resource, List<Laptop> objects) {
         super(context, resource, objects);
@@ -41,7 +42,7 @@ public class LaptopAdapter extends ArrayAdapter<Laptop>
         Laptop Lt = this.object.get(position);
         txtTen.setText(Lt.toString());
         txtThongTin.setText(Lt.getCauHinh());
-        Picasso.with(context).load(Lt.getHinh()).into(imgHinh);
+            Picasso.with(context).load(Lt.getHinh()).into(imgHinh);
         return row;
     }
 }
