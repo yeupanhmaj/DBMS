@@ -37,7 +37,7 @@ public class EditLaptopActivity extends AppCompatActivity {
     private void setInfo() {
         if(status.equals("edit"))
         {
-            this.setTitle("Sửa thông tin");
+            this.setTitle("xoá tên");
             model   = (Laptop) intent.getSerializableExtra("model");
             txtCauHinhLaptopEdit    .setText(model.getCauHinh());
             txtHangLaptopEdit       .setText(model.getHang());
